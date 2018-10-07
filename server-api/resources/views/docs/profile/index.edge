@@ -1,0 +1,39 @@
+<section id="profile" class="mt-2" style="width: 100%;">
+  <template>
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div slot="header">
+          <h1>Profile</h1>
+        </div>
+        <v-container>
+          <h3>Description</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi amet dignissimos, sint exercitationem autem et. Minus officia
+            dolores eveniet eaque deleniti, autem qui voluptatibus aspernatur expedita rem nulla ad aliquid?
+          </p>
+          <h3>Schema</h3>
+          <p>
+            <ul class="ml-3">
+              <li>name: string|unique|max:50</li>
+              <li>email: string|unique</li>
+              <li>phone: string|unique|max:30</li>
+              <li>description: string</li>
+              <li>photo: image|max:5mb</li>
+              <li>address: text</li>
+            </ul>
+          </p>
+          <h3>End Points</h3>
+          <v-layout row wrap>
+            <v-flex xs12>
+              @include('docs.profile.me')
+              @include('docs.profile.update')
+              @include('docs.profile.changePassword')
+              @include('docs.profile.photo')
+            </v-flex>
+          </v-layout>
+
+        </v-container>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </template>
+</section>

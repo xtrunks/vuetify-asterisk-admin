@@ -1,0 +1,14 @@
+# Node modules
+node_modules
+.idea
+# Adonis directory for storing tmp files
+tmp
+
+# Environment variables, never commit this file
+.env
+ex.json
+config/xtrunks_firebase.json
+
+# The development sqlite file
+database/development.sqlite
+public/img

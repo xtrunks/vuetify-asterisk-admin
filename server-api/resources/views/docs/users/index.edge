@@ -1,0 +1,47 @@
+<section id="users" class="mt-2" style="width: 100%;">
+  <template>
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div slot="header">
+          <h1>Users</h1>
+        </div>
+        <v-container>
+          <h3>Description</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi amet dignissimos, sint exercitationem autem et. Minus officia
+            dolores eveniet eaque deleniti, autem qui voluptatibus aspernatur expedita rem nulla ad aliquid?
+          </p>
+          <h3>Schema</h3>
+          <p>
+            <ul class="ml-3">
+              <li>name: string|unique|max:50</li>
+              <li>email: string|unique</li>
+              <li>phone: string|unique|max:30</li>
+              <li>password: string|min:6</li>
+              <li>description: string</li>
+              <li>photo: image|max:5mb</li>
+              <li>address: text</li>
+              <li>roles: array of integers</li>
+              <li>is_active: boolean</li>
+            </ul>
+          </p>
+          <v-alert :value="true" type="info" class="mb-3">
+            User can only CREATE, UPDATE and DELETE by Super Administrator & Administrator
+          </v-alert>
+          <h3>End Points</h3>
+          <v-layout row wrap>
+            <v-flex xs12>
+              @include('docs.users.list')
+              @include('docs.users.store')
+              @include('docs.users.show')
+              @include('docs.users.update')
+              @include('docs.users.delete')
+            </v-flex>
+          </v-layout>
+
+        </v-container>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </template>
+</section>
+

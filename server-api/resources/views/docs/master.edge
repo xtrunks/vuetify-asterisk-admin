@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <link rel="icon" href="/img/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/doc_style.css">
+</head>
+
+<body>
+  <div id="app">
+    <template>
+      <v-app id="inspire">
+        @include('docs.topNav')
+        @include('docs.sidebar')
+        <v-content>
+          <v-container fluid="fluid" class="mb-4">
+            <v-layout v-scroll="onScroll" row="row" wrap="wrap">
+              @!section('content')
+            </v-layout>
+          </v-container>
+        </v-content>
+        <v-footer color="transparent" app="app">
+          <div class="back-btn-wrapper" v-show="offsetTop > 300">
+            <v-btn fab="fab" dark="dark" color="primary" href="#introduction">
+              <v-icon dark="dark">keyboard_arrow_up</v-icon>
+            </v-btn>
+          </div>
+        </v-footer>
+      </v-app>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="/js/docs.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        drawer: null,
+        offsetTop: 0
+      },
+      methods: {
+        onScroll(e) {
+          this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+        },
+      }
+    })
+
+  </script>
+</body>
+
+</html>

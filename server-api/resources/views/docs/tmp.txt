@@ -1,0 +1,18 @@
+<v-list-tile href="#marketing_schedule">
+  Marketing Schedules
+</v-list-tile>
+<v-list-tile href="#company">
+  Companies
+</v-list-tile>
+<v-list-tile href="#studies">
+  Study Programs
+</v-list-tile>
+<v-list-tile href="#product">
+  Products
+</v-list-tile>
+
+
+  @include('docs.marketing_schedule.index')
+  @include('docs.company.index')
+  @include('docs.studies.index')
+  @include('docs.product.index')

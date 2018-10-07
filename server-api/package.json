@@ -1,0 +1,63 @@
+{
+  "name": "vuetify-asterisk-admin-server",
+  "version": "4.1.0",
+  "adonis-version": "4.1.0",
+  "description": "Adonisjs asterisk admin server rest API interface",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ace test"
+  },
+  "keywords": [
+    "adonisjs",
+    "vuetify",
+    "asterisk",
+    "asterisk admin",
+    "asterisk-admin",
+    "vuetify-asterisk-admin",
+    "vuetify asterisk admin",
+    "adonis-vuetify-asterisk-admin",
+    "adonis vuetify asterisk admin",
+    "adonis-app"
+  ],
+  "author": "Waqas Ahmad",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.1",
+    "@adonisjs/auth": "^3.0.4",
+    "@adonisjs/bodyparser": "^2.0.2",
+    "@adonisjs/cors": "^1.0.5",
+    "@adonisjs/drive": "^1.0.4",
+    "@adonisjs/fold": "^4.0.7",
+    "@adonisjs/framework": "^5.0.5",
+    "@adonisjs/ignitor": "^2.0.6",
+    "@adonisjs/lucid": "^5.0.3",
+    "@adonisjs/mail": "^3.0.6",
+    "@adonisjs/redis": "^2.0.6",
+    "@adonisjs/session": "^1.0.25",
+    "@adonisjs/validator": "^5.0.3",
+    "@adonisjs/vow": "^1.0.15",
+    "adonis-acl": "^1.1.0",
+    "adonis-scheduler": "^3.0.2",
+    "adonis-spreadsheet": "^1.0.1",
+    "adonis-swagger-jsdoc": "^1.0.1",
+    "change-case": "^3.0.2",
+    "firebase-admin": "^6.0.0",
+    "fs-extra": "^6.0.1",
+    "mysql": "^2.16.0",
+    "randomstring": "^1.1.5",
+    "redis-delete-pattern": "^0.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0"
+  },
+  "autoload": {
+    "App": "./app"
+  }
+}

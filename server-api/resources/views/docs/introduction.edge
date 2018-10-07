@@ -1,0 +1,56 @@
+<section id="introduction">
+  <v-layout row wrap>
+    <v-flex xs12>
+
+      <h1 class="mb-2 light-blue--text">Introduction</h1>
+      <p>
+        Welcome to xTrunks API. This Documentation will describe how to connect to our Back End server to feed up your mobile
+        / front-end applications along with the Request Bodies, Responses, Query Strings etc, which will be required by our
+        Back End Server.
+      </p>
+
+      <h1 class="mb-2 light-blue--text">Base URL</h1>
+      <p>
+        Documentation:
+        <code>http://localhost:4444/docs</code>
+        <br> Api Endpoint:
+        <code>http://localhost:4444/api/v1</code>
+        <br>
+      </p>
+
+      <h1 class="mb-2 light-blue--text">Request Header</h1>
+      <table class="table is-fullwidth mb-2">
+        <thead>
+          <tr>
+            <th>Header</th>
+            <th>Value</th>
+            <th>Definition</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Content-Type</td>
+            <td>application/json</td>
+            <td>The Content-Type field indicates that JSON type is acceptable to send to the recipient</td>
+          </tr>
+
+          <tr>
+            <td>Accept</td>
+            <td>application/json</td>
+            <td>The Accept field is used to specify that JSON type is acceptable for the response</td>
+          </tr>
+
+          <tr>
+            <td>Authorization</td>
+            <td>Bearer
+              <em>token value</em>
+            </td>
+            <td>You will get token value after succeeding Login to the back end server</td>
+          </tr>
+        </tbody>
+      </table>
+      <h1 class="mb-2 light-blue--text">End Points</h1>
+    </v-flex>
+  </v-layout>
+</section>

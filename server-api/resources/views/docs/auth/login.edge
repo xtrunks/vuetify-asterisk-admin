@@ -1,0 +1,124 @@
+<section id="login" style="width: 100%;">
+  <template>
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div slot="header">
+          <h2>
+            <v-chip color="success" text-color="white" label>POST /login</v-chip>
+            <small class="subheading">Get token from email and password </small>
+          </h2>
+        </div>
+        <v-container>
+          <v-layout row wrap class="mt-3">
+            <v-flex xs12 style="overflow-x:auto;">
+              <table class="table">
+                <tr>
+                  <th width="20%">End point:</th>
+                  <td width="80%">
+                    <v-chip color="grey darken-2" text-color="white" label>/login</v-chip>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Accept:
+                  </th>
+                  <td>application/json</td>
+                </tr>
+                <tr>
+                  <th>Body</th>
+                  <td>
+                    <ul>
+                      <li>email: string, required</li>
+                      <li>password: string, required</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Response:
+                  </th>
+                  <td>
+<pre>
+<code>
+{
+  "meta": {
+    "status": 200,
+    "message": "Login successfully"
+  },
+  "data": {
+    "type": "bearer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTUzNTcwNzIwOSwiZXhwIjoxNTM1ODgwMDA5fQ.yqiMx6hRkOUpWIF3-DAkORRLGJXC9yuYFqlNed0iryg",
+    "refreshToken": "f42d1c68821874f3c2e3a595564a77c23W8WmiNr7sFgv4pv8KprYhTi2XvBMDx22SvBQzIgLUqXsZSRLOIxAEcNxUZrU5ui",
+    "user": {
+      "id": 1,
+      "uid": "dcfdd9f9-b2fe-47e4-bfae-5a4d905e58a4",
+      "name": "Super Administrator",
+      "email": "super_administrator@xtrunks.com",
+      "phone": "123456789",
+      "description": null,
+      "photo": "",
+      "address": null,
+      "is_active": 1,
+      "created_at": "2018-08-31 16:19:56",
+      "updated_at": "2018-08-31 16:19:56",
+      "roles": [{
+        "id": 1,
+        "slug": "super-administrator",
+        "name": "Super Administrator",
+        "description": null,
+        "created_at": "2018-08-31 16:19:55",
+        "updated_at": "2018-08-31 16:19:55",
+        "pivot": {
+          "role_id": 1,
+          "user_id": 1
+        }
+      }]
+    }
+  }
+}
+
+</code>
+</pre>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Posible Errors</th>
+                  <td>
+<pre>
+<code>
+{
+  "meta": {
+    "status": 400,
+    "message": "Login Failed"
+  }
+},
+{
+  "meta": {
+    "status": 422,
+    "message": "Validation failed"
+  },
+  "details": [
+    {
+      "message": "email is required",
+      "field": "email",
+      "validation": "required"
+    }
+  ]
+},
+{
+  "meta": {
+    "status": 401,
+    "message": "Expired token"
+  }
+}
+</code>
+</pre>
+                  </td>
+                </tr>
+              </table>
+            </v-flex>
+
+          </v-layout>
+        </v-container>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </template>
+</section>

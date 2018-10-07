@@ -1,0 +1,35 @@
+<section id="permissions" class="mt-2" style="width: 100%;">
+  <template>
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div slot="header">
+          <h1>Permissions</h1>
+        </div>
+        <v-container>
+          <h3>Description</h3>
+
+          <h3>Schema</h3>
+          <p>
+            <ul class="ml-3">
+              <li>name: string|unique</li>
+              <li>slug: string</li>
+              <li>description: string</li>
+
+            </ul>
+          </p>
+          <h3 class="mt-3">End Points</h3>
+          <v-layout row wrap>
+            <v-flex xs12>
+              @include('docs.permissions.list')
+              @include('docs.permissions.store')
+              @include('docs.permissions.show')
+              @include('docs.permissions.update')
+              @include('docs.permissions.delete')
+            </v-flex>
+          </v-layout>
+
+        </v-container>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </template>
+</section>

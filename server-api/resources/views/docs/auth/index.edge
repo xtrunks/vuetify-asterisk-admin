@@ -1,0 +1,33 @@
+<section id="auth" class="mt-2" style="width: 100%;">
+  <template>
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div slot="header">
+          <h1>Authentication</h1>
+        </div>
+        <v-container>
+          <h3>Description</h3>
+          <p>
+Every Web application deals with User Management and Authentication at some stage.
+This "xtrunks API" is fully featured with <a href="https://jwt.io/" target="_blank">jwt authentication</a>
+which is an industry standard to implement stateless authentication using tokens,
+          </p>
+          <p>
+<v-alert :value="true" type="info">
+  Set the Authorization = 'Bearer {token}' header to authenticate the request.
+</v-alert>
+          </p>
+          <h3>End Points</h3>
+          <v-layout row wrap>
+            <v-flex xs12>
+              @include('docs.auth.login')
+              @include('docs.auth.refresh')
+
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </template>
+</section>
+

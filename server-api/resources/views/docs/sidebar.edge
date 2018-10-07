@@ -1,0 +1,30 @@
+<v-navigation-drawer v-model="drawer" fixed="fixed" app="app" width="250" dark="dark">
+  <v-toolbar flat="flat">
+    <v-list>
+      <v-list-tile>
+        <img src="/img/logo2.png" alt="" width="60%">
+      </v-list-tile>
+    </v-list>
+  </v-toolbar>
+  <v-divider></v-divider>
+  <v-list dense="dense" class="pt-0">
+    <v-list-tile href="#introduction">
+      Introduction
+    </v-list-tile>
+    <v-list-tile href="#auth">
+      Authentication
+    </v-list-tile>
+    <v-list-tile href="#roles">
+      Roles
+    </v-list-tile>
+    <v-list-tile href="#permissions">
+      Permissions
+    </v-list-tile>
+    <v-list-tile href="#users">
+      Users
+    </v-list-tile>
+    <v-list-tile href="#profile">
+      Profile
+    </v-list-tile>
+  </v-list>
+</v-navigation-drawer>

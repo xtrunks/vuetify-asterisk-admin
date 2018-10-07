@@ -1,0 +1,83 @@
+<section id="role_delete" style="width: 100%;">
+  <template>
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div slot="header">
+            <v-chip color="deep-orange darken-4" text-color="white" label>Delete /roles/{id}</v-chip>
+            <small class="subheading">Delete Role by id </small>
+        </div>
+        <v-container>
+          <v-layout row wrap class="mt-3">
+            <v-flex xs12 style="overflow-x:auto;">
+                <v-alert :value="true" type="info">
+                  Default Role ['Super Administrator', 'Administrator', 'Supervisor', 'Marketing', 'Student'] cannot be deleted
+                </v-alert>
+              <table class="table is-fullwidth">
+                <tr>
+                  <th width="20%">End point:</th>
+                  <td width="80%">
+                    <v-chip color="grey darken-2" text-color="white" label>/roles/{id}</v-chip>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Accept:
+                  </th>
+                  <td>application/json</td>
+                </tr>
+                <tr>
+                  <th>Authorization:
+                  </th>
+                  <td>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                  </td>
+                </tr>
+                <tr>
+                  <th>Response:
+                  </th>
+                  <td>
+                    <pre>
+<code>
+{
+  "meta": {
+    "status": 200,
+    "message": "Deleted successfully"
+  }
+}
+</code>
+						</pre>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Possible Errors</th>
+                  <td>
+                    <pre>
+<code>
+{
+  "meta": {
+    "status": 400,
+    "message": "Data not found"
+  }
+},
+{
+  "meta": {
+    "status": 401,
+    "message": "Unathorized"
+  }
+},
+{
+  "meta": {
+    "status": 403,
+    "message": "Forbidden"
+  }
+}
+</code>
+</pre>
+                  </td>
+                </tr>
+              </table>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </template>
+</section>

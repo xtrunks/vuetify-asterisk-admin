@@ -1,0 +1,102 @@
+<section id="refresh" style="width: 100%;">
+  <template>
+    <v-expansion-panel>
+      <v-expansion-panel-content>
+        <div slot="header">
+          <h2>
+            <v-chip color="success" text-color="white" label>POST /refresh</v-chip>
+            <small class="subheading">Get token from refresh token </small>
+          </h2>
+        </div>
+        <v-container>
+          <v-layout row wrap class="mt-3">
+            <v-flex xs12 style="overflow-x:auto;">
+              <table class="table">
+                <tr>
+                  <th width="20%">End point:</th>
+                  <td width="80%">
+                    <v-chip color="grey darken-2" text-color="white" label>/refresh</v-chip>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Accept:
+                  </th>
+                  <td>application/json</td>
+                </tr>
+                <tr>
+                  <th>Body</th>
+                  <td>
+                    <ul>
+                      <li>refreshToken: string, required</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Response:
+                  </th>
+                  <td>
+<pre>
+<code>
+{
+  "meta": {
+    "status": 200,
+    "message": "Login successfully"
+  },
+  "data": {
+    "type": "bearer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTUzMDYxMTQyMSwiZXhwIjoxNTMwNzg0MjIxfQ.rMD-X06VMUyA3GYdsCPPXZS-FsDgM8M7yGzgWASUZcc",
+    "refreshToken": "76d94de255c49a93af2674e529e518c1gIQxl4r5qk5mphDcSdY7uBVAMA916gESpC+YxabnpofkzCU/jT5r3pkMfrHh8F9P",
+    "user": {
+      "id": 1,
+      "name": "Super Administrator",
+      "email": "super_administrator@xtrunks.com",
+      "phone": "123456789",
+      "description": null,
+      "photo": "",
+      "address": null,
+      "is_active": 1,
+      "created_at": "2018-07-02 16:09:07",
+      "updated_at": "2018-07-02 16:09:07",
+      "roles": [{
+        "id": 1,
+        "slug": "super-administrator",
+        "name": "Super Administrator",
+        "description": null,
+        "created_at": "2018-07-02 16:09:07",
+        "updated_at": "2018-07-02 16:09:07",
+        "pivot": {
+          "role_id": 1,
+          "user_id": 1
+        }
+      }]
+    }
+  }
+}
+</code>
+</pre>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Posible Errors</th>
+                  <td>
+<pre>
+<code>
+{
+  "meta": {
+    "status": 400,
+    "message": "Login Failed"
+  }
+}
+</code>
+</pre>
+                  </td>
+                </tr>
+              </table>
+            </v-flex>
+
+          </v-layout>
+        </v-container>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </template>
+</section>
