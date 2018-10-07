@@ -16,15 +16,16 @@ Vuetify Asterisk ARI Admin is NOT FREE for commercial using in any form modified
 Vuetify + Adonis + Asterisk using ARI
 
 …or create a new repository on the command line
-
+'''
 echo "# vuetify-asterisk-admin" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/xtrunks/vuetify-asterisk-admin.git
 git push -u origin master
-
+'''
 …or push an existing repository from the command line
-
+'''
 git remote add origin https://github.com/xtrunks/vuetify-asterisk-admin.git
 git push -u origin master
+'''
