@@ -30,3 +30,4 @@ Run the following command to run startup migrations.
 adonis migration:run --seed
 
 ```
+Vuetify Asterisk ARI Admin is NOT FREE for commercial using in any form modified or as it is. Please find more about licensing the product [here](https://xtrunks.com/Licenses) 
