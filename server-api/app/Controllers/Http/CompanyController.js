@@ -55,7 +55,7 @@ class CompanyController {
     /**
      * Store
      * Store New Companys
-     * Can only be done by Super Administrator
+     * Can only be done by Superadmin
      */
 
     async store({ request, response, auth }) {
@@ -104,7 +104,7 @@ class CompanyController {
     /**
      * Update
      * Update Company by Id
-     * Can only be done by Super Administrator
+     * Can only be done by Superadmin
      */
     async update({ request, response, auth }) {
         let body = request.only(fillable)
@@ -130,8 +130,8 @@ class CompanyController {
     /**
      * Delete
      * Delete Company by Id
-     * Can only be done by Super Administrator
-     * Default Company ['Super Administrator', 'Administrator', 'Supervisor', 'Marketing', 'Student'] cannot be deleted
+     * Can only be done by Superadmin
+     * Default Company ['Superadmin', 'Administrator', 'Supervisor', 'Marketing', 'Student'] cannot be deleted
      */
     async destroy({ request, response, auth }) {
         const id = request.params.id

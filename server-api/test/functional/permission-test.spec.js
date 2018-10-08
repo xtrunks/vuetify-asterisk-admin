@@ -44,7 +44,7 @@ test('Unathorized cannot create Permission', async ({ client }) => {
   response.assertStatus(401)
 })
 
-test('Non Super Administrator cannot Create Permission', async ({ client }) => {
+test('Non Superadmin cannot Create Permission', async ({ client }) => {
   const user = await User.find(3)
   const response = await client
     .post(endpoint)
@@ -54,7 +54,7 @@ test('Non Super Administrator cannot Create Permission', async ({ client }) => {
   response.assertStatus(403)
 })
 
-test('Super Administrator can Create Permission', async ({ client }) => {
+test('Superadmin can Create Permission', async ({ client }) => {
   const user = await User.find(1)
   const response = await client
     .post(endpoint)

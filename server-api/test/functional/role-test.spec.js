@@ -42,7 +42,7 @@ test('Unathorized cannot create Role', async ({ client }) => {
   response.assertStatus(401)
 })
 
-test('Non Super Administrator cannot Create Role', async ({ client }) => {
+test('Non Superadmin cannot Create Role', async ({ client }) => {
   const user = await User.find(2)
   const response = await client
     .post('/api/v1/roles')
@@ -52,7 +52,7 @@ test('Non Super Administrator cannot Create Role', async ({ client }) => {
   response.assertStatus(403)
 })
 
-test('Super Administrator can Create Role', async ({ client }) => {
+test('Superadmin can Create Role', async ({ client }) => {
   const user = await User.find(1)
   const response = await client
     .post('/api/v1/roles')

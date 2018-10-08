@@ -56,7 +56,7 @@ class RoleController {
     /**
      * Store
      * Store New Roles
-     * Can only be done by Super Administrator
+     * Can only be done by Superadmin
      */
     async store({ request, response, auth }) {
         let body = request.only(fillable)
@@ -101,7 +101,7 @@ class RoleController {
     /**
      * Update
      * Update Role by Id
-     * Can only be done by Super Administrator
+     * Can only be done by Superadmin
      */
     async update({ request, response, auth }) {
         let body = request.only(fillable)
@@ -126,8 +126,8 @@ class RoleController {
     /**
      * Delete
      * Delete Role by Id
-     * Can only be done by Super Administrator
-     * Default Role ['Super Administrator', 'Administrator', 'Supervisor', 'Marketing', 'Student'] cannot be deleted
+     * Can only be done by Superadmin
+     * Default Role ['Superadmin', 'Administrator', 'Supervisor', 'Marketing', 'Student'] cannot be deleted
      */
     async destroy({ request, response, auth }) {
         const id = request.params.id

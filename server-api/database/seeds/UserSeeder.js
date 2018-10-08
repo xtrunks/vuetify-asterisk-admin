@@ -6,7 +6,7 @@ const Database = use('Database')
 const moment = require('moment')
 const randomstring = require('randomstring')
 const now = moment().format('YYYY-MM-DD HH:mm:ss')
-const roles = ['SuperAdmin', 'Administrator', 'Supervisor', 'Marketing', 'Student']
+const roles = ['Superadmin', 'Administrator', 'Supervisor', 'Marketing', 'Student']
 const changeCase = require('change-case')
 
 class UserSeeder {

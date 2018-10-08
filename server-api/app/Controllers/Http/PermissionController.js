@@ -56,7 +56,7 @@ class PermissionController {
     /**
      * Store
      * Store New Permissions
-     * Can only be done by Super Administrator
+     * Can only be done by Superadmin
      */
     async store({ request, response, auth }) {
         let body = request.only(fillable)
@@ -100,7 +100,7 @@ class PermissionController {
     /**
      * Update
      * Update Permission by Id
-     * Can only be done by Super Administrator
+     * Can only be done by Superadmin
      */
     async update({ request, response, auth }) {
         let body = request.only(fillable)
@@ -125,7 +125,7 @@ class PermissionController {
     /**
      * Delete
      * Delete Permission by Id
-     * Can only be done by Super Administrator
+     * Can only be done by Superadmin
      */
     async destroy({ request, response, auth }) {
         const id = request.params.id
