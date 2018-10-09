@@ -1,0 +1,9 @@
+html, body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.noty_theme__metroui.noty_bar .noty_body {
+  padding: 1.25em;
+  font-size: 14px;
+  text-align: center;
+}

@@ -102,10 +102,7 @@ Route
         [['permissions.destroy'], ['can:delete_permission']]
       ]))
 
-    /**
-     * Me
-     */
-    Route.get('me', 'ProfileController.me')
+
 
     /**
      * Companies
@@ -137,7 +134,10 @@ Route
 
     Route.get('export-data', 'DataExportController.index').validator('ExportData')
 
-
+    /**
+     * Me
+     */
+    Route.get('me', 'ProfileController.me')
 
   })
   .prefix('api/v1')
