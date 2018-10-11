@@ -45,7 +45,7 @@
                             <v-card-title primary-title>
                                 <div>
                                     <div>Products</div>
-                                    <div class="headline primary--text"> {{ dashboardData.total_products }}</div>
+                                    <div class="headline primary--text"> You have {{ dashboardData.total_products }}</div>
                                 </div>
                             </v-card-title>
                         </v-flex>

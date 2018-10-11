@@ -13,6 +13,7 @@ const User = use('App/Models/User')
 class LoginController {
     async login({ request, response, auth }) {
         try {
+            console.log('try')
             const { email, password } = request.post()
             // Check user
             const user = await User.findBy('email', email)
@@ -26,6 +27,7 @@ class LoginController {
             data.user = user
             return response.status(200).send(this.successResponse(data))
         } catch (e) {
+            console.log('error')
             console.log(e) //eslint-disable-line
             return response.status(400).send(this.errorResponse())
         }

@@ -2,7 +2,7 @@
 
 const admin = require('firebase-admin')
 
-const serviceAccount = require('../../config/xtrunks-firebase')
+const serviceAccount = require('../../config/firebase.json')
 
 class PushNotification {
   constructor() {
