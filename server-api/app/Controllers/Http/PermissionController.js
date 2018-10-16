@@ -44,7 +44,7 @@ class PermissionController {
             }
             const data = await Permission.query().orderBy('id').paginate(parseInt(page), parseInt(limit))
             let parsed = ResponseParser.apiCollection(data.toJSON())
-            console.log('Hello',Env.get('REDIS_ENABLED',false));
+            //console.log('Hello',Env.get('REDIS_ENABLED',false));
             if(Env.get('REDIS_ENABLED',false)) {
                 await RedisHelper.set(redisKey, parsed)
             }

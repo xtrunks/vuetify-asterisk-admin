@@ -9,11 +9,17 @@
             <v-tab href="#maps">
                 Maps
             </v-tab>
+            <v-tab href="#users">
+                Users
+            </v-tab>
             <v-tab-item :id="'detail'">
                 <detail/>
             </v-tab-item>
             <v-tab-item :id="'maps'">
                 <maps/>
+            </v-tab-item>
+            <v-tab-item :id="'users'">
+                <users/>
             </v-tab-item>
         </v-tabs>
     </div>
@@ -22,7 +28,7 @@
 <script>
     import { COMPANY_URL } from "~/utils/apis"
     import axios from "axios"
-    import { detail, dform, maps } from "~/components/company"
+    import { detail, dform, maps, users } from "~/components/company"
     import catchError from "~/utils/catchError"
 
     export default {
@@ -34,7 +40,7 @@
                 catchError(e)
             }
         },
-        components: { detail, dform, maps },
+        components: {users, detail, dform, maps },
         computed: {
             dark() {
                 return this.$store.state.dark

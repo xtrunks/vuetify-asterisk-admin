@@ -37,6 +37,12 @@ class User extends Model {
       .pivotTable('marketing_supervisor')
   }
 
+  companies() {
+      return this
+          .belongsToMany('App/Models/Company')
+          .pivotTable('user_companies')
+  }
+
   marketings() {
     return this
       .belongsToMany('App/Models/User', 'supervisor_id', 'marketing_id', 'id')

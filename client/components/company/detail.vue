@@ -56,7 +56,7 @@
             return {
                 fillable: [
                     { key: "name", value: "", rules: "required|max:50" },
-                    { key: "phone", value: "", rules: "required|max:30" },
+                    { key: "phone", value: "", rules: "required|max:11|numeric" },
                     { key: "email", value: "", rules: "required|email" },
                     { key: "contact_person", value: "", rules: "required|max:50" },
                     { key: "province", value: "", rules: "required|max:50" },

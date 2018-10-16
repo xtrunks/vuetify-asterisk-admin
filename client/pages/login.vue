@@ -31,6 +31,7 @@
                                         label="Enter your password"
                                         hint="At least 6 characters"
                                         min="6"
+                                        @click:append="e1 = !e1"
                                 />
                             </form>
                         </v-card-text>

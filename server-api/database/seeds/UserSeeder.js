@@ -6,7 +6,7 @@ const Database = use('Database')
 const moment = require('moment')
 const randomstring = require('randomstring')
 const now = moment().format('YYYY-MM-DD HH:mm:ss')
-const roles = ['Superadmin', 'Administrator', 'Supervisor', 'Marketing', 'Student']
+const roles = ['Superadmin', 'Administrator', 'Supervisor']
 const changeCase = require('change-case')
 
 class UserSeeder {
@@ -20,13 +20,27 @@ class UserSeeder {
 
     await User.truncate()
     for (let i = 0; i < roles.length; i++) {
-      let userData = {
-        name: roles[i],
-        email: changeCase.snakeCase(roles[i]) + '@xtrunks.com',
-        password: 'xtrunks',
-        phone: '3000515119',
-        is_active: 1,
-      }
+        let userData = {}
+        if(i == 0){
+             userData = {
+                name: roles[i],
+                email: changeCase.snakeCase(roles[i]) + '@xtrunks.com',
+                password: 'xtrunks',
+                phone: '300051511'+i,
+                is_active: 1,
+                address: changeCase.snakeCase(roles[i]) + ' address'
+            }
+        }else{
+             userData = {
+                name: roles[i],
+                email: changeCase.snakeCase(roles[i]) + '@xtrunks.com',
+                password: 'xtrunks',
+                phone: '300051511'+i,
+                is_active: 0,
+                address: changeCase.snakeCase(roles[i]) + ' address'
+            }
+        }
+
       let user = await User.create(userData)
       await user.roles().attach(i + 1)
     }
@@ -35,7 +49,6 @@ class UserSeeder {
     //   .model('App/Models/User')
     //   .createMany(15)
     await this.setActivation()
-    await this.seedMarketing()
   }
 
   async setActivation() {
@@ -54,15 +67,6 @@ class UserSeeder {
         updated_at: now,
       })
 
-    }
-  }
-
-  async seedMarketing() {
-    const usersArray = await Factory
-      .model('App/Models/User')
-      .createMany(5)
-    for (let i = 0; i < usersArray.length; i++) {
-      await usersArray[i].roles().attach(4)
     }
   }
 }

@@ -9,7 +9,7 @@ class RoleSeeder {
     await Database.raw('SET FOREIGN_KEY_CHECKS = 0;')
 
     await Role.truncate()
-    const roles = ['Superadmin', 'Administrator', 'Supervisor', 'Marketing', 'Student']
+    const roles = ['Superadmin', 'Administrator', 'Supervisor']
     for (let i = 0; i < roles.length; i++) {
       await Role.create({
         name: roles[i],

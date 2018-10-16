@@ -10,7 +10,7 @@
                         <form>
                             <v-layout row wrap>
                                 <v-flex v-for="(f, index) in fillable" :key="index" xs12>
-                                    <div v-if="!inArray(notIncluded, f.key)">
+                                    <div v-if="f.type == 'text'">
                                         <label>{{ setCase(f.key) }}</label>
                                         <v-text-field
                                                 v-validate="f.rules"
@@ -20,11 +20,36 @@
                                                 :data-vv-name="f.key"
                                         />
                                     </div>
-                                    <div v-if="f.key == 'roles' && comboData">
+                                    <div v-if="f.type == 'phone'">
+                                        <label>{{ setCase(f.key) }}</label>
+                                        <v-text-field
+                                                v-validate="f.rules"
+                                                v-model="formData[f.key]"
+                                                :error-messages="errors.collect(f.key)"
+                                                :name="f.key"
+                                                :data-vv-name="f.key"
+                                                mask="(####)-#######"
+                                                max="11"
+                                        />
+                                    </div>
+                                    <div v-if="f.type == 'password'">
+                                        <label>{{ setCase(f.key) }}</label>
+                                        <v-text-field
+                                                v-validate="f.rules"
+                                                v-model="formData[f.key]"
+                                                :error-messages="errors.collect(f.key)"
+                                                :name="f.key"
+                                                :data-vv-name="f.key"
+                                                :type="showPassword ? 'text' : 'password'"
+                                                :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                                                @click:append="showPassword = !showPassword"
+                                        />
+                                    </div>
+                                    <div v-if="f.key == 'roles' && comboDataRoles">
                                         <label>Roles</label>
                                         <v-autocomplete
                                                 v-validate="'required|numeric'"
-                                                :items="comboData"
+                                                :items="comboDataRoles"
                                                 :error-messages="errors.collect('roles')"
                                                 :data-vv-name="'roles'"
                                                 v-model="formData['roles']"
@@ -36,7 +61,33 @@
                                                 multiple
                                         />
                                     </div>
-                                    <div v-if="f.key == 'is_active'">
+                                    <div v-if="f.key == 'companies' && comboDataCompanies">
+                                        <label>Companies</label>
+                                        <v-autocomplete
+                                                v-validate="'numeric'"
+                                                :items="comboDataCompanies"
+                                                :error-messages="errors.collect('companies')"
+                                                :data-vv-name="'companies'"
+                                                v-model="formData['companies']"
+                                                label="Select Companies"
+                                                single-line
+                                                item-text="name"
+                                                item-value="id"
+                                                cache-items
+                                                multiple
+                                        />
+                                    </div>
+                                    <div v-if="f.type == 'textarea'">
+                                        <label>{{ setCase(f.key) }}</label>
+                                        <v-textarea
+                                                v-validate="f.rules"
+                                                v-model="formData[f.key]"
+                                                :error-messages="errors.collect(f.key)"
+                                                :name="f.key"
+                                                :data-vv-name="f.key"
+                                        ></v-textarea>
+                                    </div>
+                                    <div v-if="f.type == 'switch'">
                                         <v-switch
                                                 v-model="formData['is_active']"
                                                 label="Active"
@@ -62,6 +113,8 @@
     import { USER_URL, COMBO_DATA_URL } from "~/utils/apis"
     import axios from "axios"
     import catchError, { showNoty } from "~/utils/catchError"
+    import { mapActions } from "vuex"
+
     export default {
         $_veeValidate: {
             validator: "new"
@@ -76,17 +129,19 @@
         data() {
             return {
                 dialog: false,
+                showPassword:false,
                 fillable: [
-                    { key: "name", value: "", rules: "required|max:50" },
-                    { key: "email", value: "", rules: "required|email" },
-                    { key: "phone", value: "", rules: "required|max:30" },
-                    { key: "password", value: "", rules: "required|min:6" },
-                    { key: "roles", value: [], rules: "required|array" },
-                    { key: "is_active", value: true, rules: "required|boolean" },
-                    { key: "address", value: "", rules: "required|max:250" },
-                    { key: "description", value: "", rules: "max:250" }
+                    { key: "name", type:'text', value: "", rules: "required|max:50", },
+                    { key: "email", type:'text', value: "", rules: "required|email" },
+                    { key: "phone", type:'phone', value: "", rules: "required|max:11|numeric" },
+                    { key: "password", type:'password', value: "", rules: "required|min:6" },
+                    { key: "roles", type:'select', value: [], rules: "required|array" },
+                    { key: "companies", type:'select', value: [], rules: "array" },
+                    { key: "is_active", type:'switch', value: true, rules: "required|boolean" },
+                    { key: "address", type:'textarea', value: "", rules: "required|max:250" },
+                    { key: "description", type:'textarea', value: "", rules: "max:250" }
                 ],
-                notIncluded: ["roles", "is_active"],
+                notIncluded: ["roles", "companies", "is_active"],
                 formData: {},
                 formTitle: "Register New User"
             }
@@ -99,6 +154,7 @@
         created() {
             this.setAuth()
             this.getRoles()
+            this.getCompanies()
             this.setFields()
         },
         computed: {
@@ -107,17 +163,11 @@
             }
         },
         methods: {
+          ...mapActions(['getRoles','getCompanies']),
             onClose() {
                 this.$emit("onClose")
             },
-            async getRoles() {
-                try {
-                    let roles = await axios.get(COMBO_DATA_URL + "Role")
-                    if (roles) this.$store.commit("comboData", roles.data)
-                } catch (e) {
-                    catchError(e)
-                }
-            },
+
             setFields() {
                 this.errors.clear()
                 if (this.currentEdit) {

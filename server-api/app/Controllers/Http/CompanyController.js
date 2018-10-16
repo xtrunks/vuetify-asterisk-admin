@@ -87,8 +87,7 @@ class CompanyController {
                 return response.status(200).send(cached)
             }
         }
-
-        const data = await Company.find(id)
+        const data = await Company.query().with('users').where('id', id).first()
         if (!data) {
             return response.status(400).send(ResponseParser.apiNotFound())
         }

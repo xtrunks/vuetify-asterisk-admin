@@ -11,22 +11,46 @@
                 </v-toolbar>
                 <form>
                     <v-layout row wrap>
-                        <v-flex v-for="(f, index) in fillable" v-if="!inArray(['is_active', 'password'], f.key)" :key="index" sm6 xs12>
-                            <label>{{ setCase(f.key) }}</label>
-                            <v-text-field
-                                    v-validate="f.rules"
-                                    v-model="formData[f.key]"
-                                    :error-messages="errors.collect(f.key)"
-                                    :name="f.key"
-                                    :data-vv-name="f.key"
-                            />
-                        </v-flex>
-                        <v-flex sm6 xs12>
-                            <v-switch
-                                    v-model="switch1"
-                                    label="Active"
-                                    color="primary"
-                            />
+                        <v-flex v-for="(f, index) in fillable" :key="index" sm6 xs12>
+                            <div v-if="f.type == 'text'">
+                                <label>{{ setCase(f.key) }}</label>
+                                <v-text-field
+                                        v-validate="f.rules"
+                                        v-model="formData[f.key]"
+                                        :error-messages="errors.collect(f.key)"
+                                        :name="f.key"
+                                        :data-vv-name="f.key"
+                                />
+                            </div>
+                            <div v-if="f.type == 'phone'">
+                                <label>{{ setCase(f.key) }}</label>
+                                <v-text-field
+                                        v-validate="f.rules"
+                                        v-model="formData[f.key]"
+                                        :error-messages="errors.collect(f.key)"
+                                        :name="f.key"
+                                        :data-vv-name="f.key"
+                                        mask="(####)-#######"
+                                        max="11"
+                                />
+                            </div>
+                            <div v-if="f.type == 'textarea'">
+                                <label>{{ setCase(f.key) }}</label>
+                                <v-textarea
+                                        v-validate="f.rules"
+                                        v-model="formData[f.key]"
+                                        :error-messages="errors.collect(f.key)"
+                                        :name="f.key"
+                                        :data-vv-name="f.key"
+                                ></v-textarea>
+                            </div>
+                            <div v-if="f.type == 'switch'">
+                                <v-switch
+                                        v-model="formData['is_active']"
+                                        label="Active"
+                                        color="primary"
+                                />
+                            </div>
                         </v-flex>
                     </v-layout>
                 </form>
@@ -52,12 +76,12 @@
         data() {
             return {
                 fillable: [
-                    { key: "name", value: "", rules: "required|max:50" },
-                    { key: "email", value: "", rules: "required|email" },
-                    { key: "phone", value: "", rules: "required|max:30" },
-                    { key: "is_active", value: "", rules: "required" },
-                    { key: "address", value: "", rules: "required|max:250" },
-                    { key: "description", value: "", rules: "max:250" }
+                    { key: "name", type:'text', value: "", rules: "required|max:50" },
+                    { key: "email", type:'text', value: "", rules: "required|email" },
+                    { key: "phone", type:'phone', value: "", rules: "required|max:11|numeric" },
+                    { key: "is_active", type:'switch', value: "", rules: "required" },
+                    { key: "address", type:'textarea', value: "", rules: "required|max:250" },
+                    { key: "description", type:'textarea', value: "", rules: "max:250" }
                 ],
 
                 formData: {},

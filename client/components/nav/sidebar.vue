@@ -12,7 +12,7 @@
                 <v-list class="pa-0">
                     <v-list-tile>
                         <v-list-tile-content v-if="!mini">
-                            <img src="/images/logo2.png" width="50%" style="margin-left: -10px;">
+                            <img src="/images/logo2.png" width="20%" style="margin-left: 0px;">
                         </v-list-tile-content>
                         <v-list-tile-avatar v-if="mini">
                             <img src="/images/logo.png" >

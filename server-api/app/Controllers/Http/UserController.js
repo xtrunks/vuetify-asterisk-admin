@@ -2,6 +2,7 @@
 
 const User = use('App/Models/User')
 const Role = use('App/Models/Role')
+const Company = use('App/Models/Company')
 const { RedisHelper, ResponseParser } = use('App/Helpers')
 const { ActivityTraits, ActivationTraits, UserQueryTraits } = use('App/Traits')
 const Env = use('Env')
@@ -49,6 +50,12 @@ class UserController {
             await this.attachRoles(data, roles)
             await data.load('roles')
         }
+
+        let { companies } = request.post()
+        if (companies) {
+            await this.attachCompanies(data, companies)
+            await data.load('companies')
+        }
         await ActivationTraits.createAndActivate(data)
 
         if(Env.get('REDIS_ENABLED',false)) {
@@ -82,16 +89,16 @@ class UserController {
             }
         }
 
-        const data = await User.query().with('roles').where('id', id).first()
+        const data = await User.query().with('roles').with('companies').where('id', id).first()
         if (!data) {
             return response.status(400).send(ResponseParser.apiNotFound())
         }
-        if (data.role_id === 3) {
-            await data.load('marketings')
-        }
+
+        /*
         if (data.role_id === 4) {
             await data.load('supervisors')
         }
+        */
         let parsed = ResponseParser.apiItem(data.toJSON())
 
         if(Env.get('REDIS_ENABLED',false)) {
@@ -120,6 +127,11 @@ class UserController {
             await this.attachRoles(data, roles)
         }
         await data.load('roles')
+        let { companies } = request.post()
+        if (companies) {
+            await this.attachCompanies(data, companies)
+        }
+        await data.load('companies')
         const activity = `Update User '${data.name}'`
         await ActivityTraits.saveActivity(request, auth, activity)
 
@@ -155,6 +167,7 @@ class UserController {
         await data.supervisors().detach()
         await data.marketings().detach()
         await data.roles().detach()
+        await data.companies().detach()
         // Delete Data
         await data.delete()
         return response.status(200).send(ResponseParser.apiDeleted())
@@ -170,6 +183,20 @@ class UserController {
             let role = await Role.find(r)
             if (role) {
                 await user.roles().attach(role.id)
+            }
+        })
+    }
+
+    /**
+     * Attach Companies to User
+     */
+
+    async attachCompanies(user, companies) {
+        await user.companies().detach()
+        companies.forEach(async (r) => {
+            let company = await Company.find(r)
+            if (company) {
+                await user.companies().attach(company.id)
             }
         })
     }

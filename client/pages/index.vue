@@ -10,8 +10,8 @@
                         <v-flex xs8>
                             <v-card-title primary-title>
                                 <div>
-                                    <div>Active Marketings</div>
-                                    <div class="headline primary--text"> {{ dashboardData.total_marketings }}</div>
+                                    <div>Active Users</div>
+                                    <div class="headline primary--text"> {{ dashboardData.total_active_users }}</div>
                                 </div>
                             </v-card-title>
                         </v-flex>
@@ -29,23 +29,6 @@
                                 <div>
                                     <div>Registered Companies</div>
                                     <div class="headline primary--text"> {{ dashboardData.total_companies }}</div>
-                                </div>
-                            </v-card-title>
-                        </v-flex>
-                    </v-layout>
-                </v-card>
-            </v-flex>
-            <v-flex xs12 sm6 md4>
-                <v-card v-if="dashboardData" light class="elevation-8 mb-2" max-height="200px">
-                    <v-layout>
-                        <v-flex xs4 class="flex-all-centered">
-                            <v-icon color="primary" style="font-size: 4rem;">donut_small</v-icon>
-                        </v-flex>
-                        <v-flex xs8>
-                            <v-card-title primary-title>
-                                <div>
-                                    <div>Products</div>
-                                    <div class="headline primary--text"> You have {{ dashboardData.total_products }}</div>
                                 </div>
                             </v-card-title>
                         </v-flex>

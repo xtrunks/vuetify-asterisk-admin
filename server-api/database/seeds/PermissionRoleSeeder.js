@@ -2,10 +2,7 @@
 
 const Database = use('Database')
 
-const resources = [
-  'User', 'Role', 'Permission', 'Company', 'Product', 'Schedule', 'StudyName', 'StudyProgram', 'StudyYear',
-  'Marketing', 'MarketingAction', 'Supervisor', 'MarketingReport', 'MarketingReportAttachment'
-]
+const resources = ['User', 'Role', 'Permission', 'Company']
 
 const otherPermissions = ['Clear Redis']
 

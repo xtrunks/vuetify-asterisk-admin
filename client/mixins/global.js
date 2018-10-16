@@ -82,6 +82,8 @@ export default {
             "comboData",
             "comboData2",
             "comboData3",
+            "comboDataRoles",
+            "comboDataCompanies",
             "permissions",
             "user",
             "dashboardData"

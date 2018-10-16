@@ -12,14 +12,26 @@
                 <form>
                     <v-layout row wrap class="mt-3 px-2">
                         <v-flex v-for="(f, index) in fillable" :key="index" xs12>
-                            <label>{{ setCase(f.key) }}</label>
-                            <v-text-field
-                                    v-validate="f.rules"
-                                    v-model="formData[f.key]"
-                                    :error-messages="errors.collect(f.key)"
-                                    :name="f.key"
-                                    :data-vv-name="f.key"
-                            />
+                            <div v-if="f.type == 'text'">
+                                <label>{{ setCase(f.key) }}</label>
+                                <v-text-field
+                                        v-validate="f.rules"
+                                        v-model="formData[f.key]"
+                                        :error-messages="errors.collect(f.key)"
+                                        :name="f.key"
+                                        :data-vv-name="f.key"
+                                />
+                            </div>
+                            <div v-if="f.type == 'textarea'">
+                                <label>{{ setCase(f.key) }}</label>
+                                <v-textarea
+                                        v-validate="f.rules"
+                                        v-model="formData[f.key]"
+                                        :error-messages="errors.collect(f.key)"
+                                        :name="f.key"
+                                        :data-vv-name="f.key"
+                                ></v-textarea>
+                            </div>
                         </v-flex>
                     </v-layout>
                 </form>
@@ -45,9 +57,9 @@
         data() {
             return {
                 fillable: [
-                    { key: "name", value: "", rules: "required|max:50" },
+                    { key: "name", type:'text', value: "", rules: "required|max:50" },
                     // { key: "slug", value: "", rules: "required|max:100" },
-                    { key: "description", value: "", rules: "max:250" }
+                    { key: "description", type:'textarea', value: "", rules: "max:250" }
                 ],
                 formData: {},
                 showNoty: false,

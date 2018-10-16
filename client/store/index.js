@@ -1,5 +1,7 @@
 const cookieparser = require("cookieparser")
 import axios from "axios"
+import { USER_URL, COMBO_DATA_URL } from "~/utils/apis"
+import catchError from "~/utils/catchError"
 
 export const state = () => ({
     sidebar: false,
@@ -11,6 +13,8 @@ export const state = () => ({
     comboData: null,
     comboData2: null,
     comboData3: null,
+    comboDataRoles: null,
+    comboDataCompanies: null,
     permissions: null,
     dashboardData: null,
 
@@ -44,8 +48,17 @@ export const mutations = {
     comboData3(state, p) {
         state.comboData3 = p
     },
+    comboDataRoles(state, p) {
+        state.comboDataRoles = p
+    },
+    comboDataCompanies(state, p) {
+        state.comboDataCompanies = p
+    },
     permissions(state, p) {
         state.permissions = p
+    },
+    companies(state, p) {
+        state.companies = p
     },
     dashboardData(state, p) {
         state.dashboardData = p
@@ -68,7 +81,23 @@ export const actions = {
         commit("token", token)
         commit("user", user)
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-    }
+    },
+    async getRoles({commit}) {
+        try {
+            let roles = await axios.get(COMBO_DATA_URL + "Role")
+            if (roles) commit("comboDataRoles", roles.data)
+        } catch (e) {
+            catchError(e)
+        }
+    },
+    async getCompanies({commit}) {
+        try {
+            let companies = await axios.get(COMBO_DATA_URL + "Company")
+            if (companies) commit("comboDataCompanies", companies.data)
+        } catch (e) {
+            catchError(e)
+        }
+    },
 }
 
 export const getters = {
@@ -78,10 +107,15 @@ export const getters = {
         )
     },
     getRoles: state => name => {
-        return state.comboData.filter(
+        return state.comboDataRoles.filter(
             item => item.name.toLowerCase().indexOf(name) > -1
         )
-    }
+    },
+    getCompanies: state => name => {
+        return state.comboDataCompanies.filter(
+            item => item.name.toLowerCase().indexOf(name) > -1
+        )
+    },
 }
 // var test = _.filter(items, function (item) {
 //   return _.some(item.tags, function (tag) {

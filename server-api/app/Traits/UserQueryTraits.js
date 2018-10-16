@@ -15,7 +15,7 @@ class UserQueryTraits {
 
     async qBySearch() {
         const data = await User.query()
-            .with('roles')
+            .with('roles').with('companies')
             .where('name', 'like', `%${this.search}%`)
             .orWhere('email', 'like', `%${this.search}%`)
             .orWhere('phone', 'like', `%${this.search}%`)
@@ -41,6 +41,7 @@ class UserQueryTraits {
             .where('role_id', parseInt(this.role_id))
             .orderBy('name')
             .paginate(parseInt(this.page), parseInt(this.limit))
+        await data.load('companies')
         let parsed = ResponseParser.apiCollection(data.toJSON())
 
         if(Env.get('REDIS_ENABLED',false)) {
@@ -60,7 +61,7 @@ class UserQueryTraits {
         }
 
         const data = await User.query()
-            .with('roles')
+            .with('roles','companies')
             .orderBy('name')
             .paginate(parseInt(this.page), parseInt(this.limit))
         let parsed = ResponseParser.apiCollection(data.toJSON())

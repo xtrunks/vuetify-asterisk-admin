@@ -3,9 +3,11 @@
 const Model = use('Model')
 
 class Company extends Model {
-  studies() {
-    return this.hasMany('App/Models/StudyPrograms')
-  }
+    users() {
+        return this
+            .belongsToMany('App/Models/User')
+            .pivotTable('user_companies')
+    }
 }
 
 module.exports = Company

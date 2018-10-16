@@ -1,7 +1,7 @@
 'use strict'
 
 const { RedisHelper } = use('App/Helpers')
-//const User = use('App/Models/User')
+const User = use('App/Models/User')
 const Company = use('App/Models/Company')
 const Dashboard = use('App/Models/Dashboard')
 const Env = use('Env')
@@ -29,22 +29,16 @@ class DashboardController {
   }
 
   async storeDashboardData() {
-    /*
-    const totalMarketings = await User.query()
-          .whereHas('roles', builder => {
-              builder.where('slug', 'marketing')
-          })
+
+    const totalUsers = await User.query()
           .where('is_active', 1)
           .count('* as total')
 
-      const totalProducts = await Product.query().count('* as total')
-    */
     const totalCompanies = await Company.query().count('* as total')
-    //const totalUsers = await User.query().count('* as total')
 
     const dashboardDetails = {
       total_companies: totalCompanies[0].total,
-      //total_users: totalUsers[0].total
+      total_active_users: totalUsers[0].total
     }
 
     var dashboard = await Dashboard.first()
