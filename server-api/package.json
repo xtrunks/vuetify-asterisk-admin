@@ -25,7 +25,7 @@
   "private": true,
   "dependencies": {
     "@adonisjs/ace": "^5.0.8",
-    "@adonisjs/auth": "^3.0.7",
+    "@adonisjs/auth": "^8.2.3",
     "@adonisjs/bodyparser": "^2.0.5",
     "@adonisjs/cors": "^1.0.7",
     "@adonisjs/drive": "^1.0.4",
@@ -43,7 +43,7 @@
     "adonis-spreadsheet": "^1.0.1",
     "adonis-swagger-jsdoc": "^1.0.3",
     "change-case": "^3.0.2",
-    "firebase-admin": "^6.0.0",
+    "firebase-admin": "^11.4.1",
     "fs-extra": "^7.0.0",
     "mysql": "^2.16.0",
     "randomstring": "^1.1.5",
